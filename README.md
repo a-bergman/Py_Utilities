@@ -21,10 +21,11 @@ For these functions to run properly you should have the following installed:
 
 ## `py_workspace_utils.py` Contents
 
-| Function     | Description                                                          |
-|:-------------|:---------------------------------------------------------------------|
-| `move_file`  | Moves a file specified by name                                       |
-| `move_files` | Loops through a directory and moves all files of the specified type  |
+| Function      | Description                                                          |
+|:--------------|:---------------------------------------------------------------------|
+| `move_file`   | Moves a file specified by name                                       |
+| `move_files`  | Loops through a directory and moves all files of the specified type  |
+| `rename_file` | Renames a file specified by name
 
 
 -----
@@ -37,7 +38,8 @@ Pull requests are welcome, but for any major issues please open an issue first t
 
 ## Road Map
 
-To be added...
+- Adding logging for each function for tracking purposes
+- Improved error checking across all functions
 
 -----
 
@@ -51,5 +53,6 @@ This repo is still a work in progress: code and/or formatting is added on a day-
 
 * `py_workspace_utils.py`
 
+    - 2025-08-28 - Added `rename_file()`; updated Road Map section in `README.md`
     - 2025-08-27 - Added `move_files()`; updated comments in the module; updated and added content to `README.md`
     - 2025-08-26 - Project initiation, initial commit of work; added `move_file()`
