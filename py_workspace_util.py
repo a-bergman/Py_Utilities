@@ -1,7 +1,7 @@
 """
 This module contains various functions designed to help with tedious manipulation of files.
 
-Last Update   : 2025-08-27
+Last Update   : 2025-08-28
 Last Update By: a-bergman
 
 """
@@ -115,3 +115,38 @@ def move_files(dst_path, src_path, file_type):
             print(f"ERROR: Source {src_path} is an invalid directory.")
     else:
          print(f"ERROR: Destination {dst_path} is an invalid directory.")
+
+def rename_file(path, old_name, new_name):
+    """
+    Parameters:
+    -----------
+    path     : working directory where file is                       : str : :
+    old_name : current name of file to be renamed with the extension : str : :
+    new_name : new name of file to be renamed with the extension     : str : :
+
+    Description:
+    ------------
+    Renames a file in the specified directory.
+
+    Returns:
+    --------
+    N/A; a confirmation that the rename was successful
+    """
+    # TO DO
+    # Add support to validate file extensions are equal
+    # Add support to validate file path exists
+    
+    # Creating file paths
+    old_file = os.path.join(path, old_name)
+    new_file = os.path.join(path, new_name)
+    # Validating the a file with the new name doesn't already exist
+    if not os.path.isfile(new_file):
+        # Validating the existing file exists
+        if os.path.isfile(old_file):
+            # os.replace is preferred in Python versions >3.3
+            os.replace(old_file, new_file)
+            print(f"{old_name} has been renamed {new_name}")
+        else:
+            print(f"ERROR: {old_name} does not exist in {path}")
+    else:
+        print(f"ERROR: {new_name} already exists in {path}")
