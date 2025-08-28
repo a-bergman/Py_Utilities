@@ -6,7 +6,7 @@ Multiple Python modules containing functions to help deal with tedious manual ta
 
 ## Motivation
 
-To be added...
+At work I often had to perform tasks such as moving files to a SFTP location, renaming batches of files, and comparing files. Performing those tasks by hand was error-prone, slow, and tedious so I began to develop functions to perform those tasks for me.
 
 -----
 
