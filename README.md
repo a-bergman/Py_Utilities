@@ -16,16 +16,18 @@ For these functions to run properly you should have the following installed:
 
 - os
 - shutil
+- pandas
 
 -----
 
 ## `py_workspace_utils.py` Contents
 
-| Function      | Description                                                          |
-|:--------------|:---------------------------------------------------------------------|
-| `move_file`   | Moves a file specified by name                                       |
-| `move_files`  | Loops through a directory and moves all files of the specified type  |
-| `rename_file` | Renames a file specified by name
+| Function       | Description                                                          |
+|:---------------|:---------------------------------------------------------------------|
+| `move_file`    | Moves a file specified by name                                       |
+| `move_files`   | Loops through a directory and moves all files of the specified type  |
+| `rename_file`  | Renames a file specified by name                                     |
+| `rename_files` | Renames files using names provided in a .csv file                    |
 
 
 -----
@@ -53,6 +55,7 @@ This repo is still a work in progress: code and/or formatting is added on a day-
 
 * `py_workspace_utils.py`
 
+    - 2025-08-29 - Added `rename_files()`; updated docstrings/comments in `py_workspace_utils.py`; updated `README.md`
     - 2025-08-28 - Added `rename_file()`; updated Road Map section in `README.md`
     - 2025-08-27 - Added `move_files()`; updated comments in the module; updated and added content to `README.md`
     - 2025-08-26 - Project initiation, initial commit of work; added `move_file()`
