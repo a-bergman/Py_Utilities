@@ -1,7 +1,7 @@
 """
 This module contains various functions designed to help with tedious manipulation of files.
 
-Last Update   : 2025-08-28
+Last Update   : 2025-08-29
 Last Update By: a-bergman
 
 """
@@ -24,6 +24,7 @@ parameter : definition : type : possible values (if applicable)
 #  Standard Imports
 import os
 import shutil
+import filecmp
 
 import pandas as pd
 
@@ -200,3 +201,35 @@ def rename_files(file_path, name_path, name_csv):
                 print(f"{file} has been renamed {value}")
     else:
         print(f"ERROR: {names} is not a valid file path")
+
+def compare_files_simple(file_a, file_b):
+    """
+    Parameters:
+    -----------
+    file_a : full file path of the first of the two files being compared  : str : :
+    file_b : full file path of the second of the two files being compared : str : :
+
+    Descriptions:
+    -------------
+    Checks the sizes of the two files and if they are different it compares the two using file statistics.
+
+    Returns:
+    --------
+    N/A; prints statement displaying if they are identical or not. 
+    """
+    # TO DO
+    # Add a method arg to support
+    # using a hash based comparison
+    # method.
+    if os.path.isfile(file_a) and os.path.isfile(file_b):
+        if os.path.getsize(file_a) == os.path.getsize(file_b):
+            if filecmp.cmp(file_a, file_b) == True:
+                print(f"REPORT: {file_a.split("/")[-1]} and {file_b.split("/")[-1]} are are identical")
+            elif filecmp.cmp(file_a, file_b) == False:
+                print(f"REPORT: {file_a.split("/")[-1]} and {file_b.split("/")[-1]} are different")
+            else:
+                print("ERROR: Please Check Your Inputs")
+        else:
+            print(f"REPORT: {file_a.split("/")[-1]} and {file_b.split("/")[-1]} are different")
+    else:
+        print(f"ERROR: Please check your inputs")
