@@ -25,6 +25,8 @@ parameter : definition : type : possible values (if applicable)
 import os
 import shutil
 
+import pandas as pd
+
 # Move Single File
 
 def move_file(dst_path,src_path,file_name):
@@ -143,10 +145,58 @@ def rename_file(path, old_name, new_name):
     if not os.path.isfile(new_file):
         # Validating the existing file exists
         if os.path.isfile(old_file):
-            # os.replace is preferred in Python versions >3.3
+            # os.replace is preferred to `os.rename` in Python versions >3.3
             os.replace(old_file, new_file)
             print(f"{old_name} has been renamed {new_name}")
         else:
             print(f"ERROR: {old_name} does not exist in {path}")
     else:
         print(f"ERROR: {new_name} already exists in {path}")
+
+def rename_files(file_path, name_path, name_csv):
+    """
+    Parameters:
+    ----------
+    file_path : path to directory where files to be renamed are stored              : str : :
+    name_path : path to directory where .csv file containing name mapping is stored : str : :
+    name_csv  : name of the .csv file that contains the old-new name mapping        : str : :
+
+    Description:
+    ------------
+    Reads the specified .csv file and renames files in the file_path based on the values in the .csv.
+
+    Returns:
+    --------
+    N/A; prints a confirmation for each file renamed successfully
+    """
+    # TO DO
+    # Add a check to make sure that
+    # files with the new names do
+    # not already exist in the
+    # `file_path` location.
+
+    # Creating file path to name_csv
+    names = os.path.join(name_path, name_csv)
+    # Making sure it exists
+    if os.path.isfile(names):
+        # Reading the .csv in
+        # Converting to memory
+        name_df=pd.read_csv(names)
+        # .csv must have those two column headers
+        name_dict=dict(zip(name_df["old_name"], name_df["new_name"]))
+        # Looping through the directory where the files to be renamed are
+        for file in os.listdir(file_path):
+            # Finding the ones that are also key values
+            # Ignores files that aren't specified to be renamed
+            if file in name_dict.keys():
+                # Extracting the value from the key:value pair
+                # Renaming the file(s)
+                value=name_dict.get(file)
+                old_name=os.path.join(file_path, file)
+                new_name=os.path.join(file_path, value)
+                # `os.replace` is preferred to `os.rename` in Python versions >3.3
+                os.replace(old_name, new_name)
+                # Printing confirmation
+                print(f"{file} has been renamed {value}")
+    else:
+        print(f"ERROR: {names} is not a valid file path")
