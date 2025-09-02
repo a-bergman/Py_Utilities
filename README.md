@@ -29,7 +29,7 @@ For these functions to run properly you should have the following installed:
 | `move_files`           | Loops through a directory and moves all files of the specified type  | Yes  |
 | `rename_file`          | Renames a file specified by name                                     | Yes  |
 | `rename_files`         | Renames files using names provided in a .csv file                    | Yes  |
-| `compare_files_simple` | Compares two files to see if they are identical or not               | Yes  |
+| `compare_files_simple` | Compares two files to see if they are identical or not               | No   |
 
 -----
 
