@@ -1,0 +1,4 @@
+Source Path      : C:/Users/andre/Desktop/Stuff/Dummy_Files 
+Destination Path : C:/Users/andre/Documents/Sample 
+File Type        : .csv 
+2025-09-02 14:28:25.517488: `move_files()` : name_mapping.csv from C:/Users/andre/Documents/Sample to C:/Users/andre/Desktop/Stuff/Dummy_Files 

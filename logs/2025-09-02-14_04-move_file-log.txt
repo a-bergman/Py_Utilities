@@ -1,0 +1,4 @@
+Source Path      : C:/Users/andre/Desktop/Stuff/Dummy_Files 
+Destination Path : C:/Users/andre/Documents/Sample 
+File Name        : src_listings.sql 
+2025-09-02 14:04:03.173752: `move_file()` : src_listings.sql has from C:/Users/andre/Documents/Sample to C:/Users/andre/Desktop/Stuff/Dummy_Files 

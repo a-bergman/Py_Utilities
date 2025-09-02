@@ -1,0 +1,3 @@
+Source Path      : C:/Users/andre/Desktop/Stuff/Dummy_Files 
+Destination Path : C:/Users/andre/Documents/Sample 
+File Type        : .csv 

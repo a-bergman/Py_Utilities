@@ -1,7 +1,7 @@
 """
 This module contains various functions designed to help with tedious manipulation of files.
 
-Last Update   : 2025-08-29
+Last Update   : 2025-09-02
 Last Update By: a-bergman
 
 """
@@ -25,6 +25,7 @@ parameter : definition : type : possible values (if applicable)
 import os
 import shutil
 import filecmp
+import datetime
 
 import pandas as pd
 
@@ -44,32 +45,51 @@ def move_file(dst_path,src_path,file_name):
 
     Returns:
     --------
-    N/A; confirmation that file was moved to the destination.
+    A log file in `/logs` with the date, time, and function name in the title of the file; prints confirmation.
     """
     # TO DO:
     # A better way to handle validating 
     # each argument separately to avoid
     # the nested if statements.
 
+    # Getting the date in YYYY-MM-DD format &
+    # the time in HH:MM format. Both are used for
+    # naming the log file. The HH:MM is used to
+    # prevent files being overridden
+    today    = datetime.datetime.today().strftime('%Y-%m-%d')
+    run_time = str(datetime.datetime.now())[11:16].replace(":","_")
     # Defining the full path to the file being moved
     file_path=os.path.join(src_path, file_name)
-    # Making sure the destination is valid
+     # Making sure the destination is valid
     if os.path.isdir(dst_path):
         # Making sure the source location is valid
         if os.path.isdir(src_path):
             # Making sure the file exists in the source
             if os.path.isfile(file_path):
-                # Defining the destination location
-                # Printing confirmation of success
-                destination=os.path.join(dst_path,file_name)
-                shutil.move(file_path, destination)
-                print(f"{file_name} has been successfully moved: {destination}")
+                # Creating a .txt file to act as our log file
+                 with open(f"logs/{today}-{run_time}-move_file-log.txt", "w") as py_logger:
+                    # Getting the exact time that each code runs at
+                    dt_now=datetime.datetime.now()
+                    # Adding the path, new, and old file names to the log file
+                    py_logger.write(f"Source Path      : {src_path} \n")
+                    py_logger.write(f"Destination Path : {dst_path} \n")
+                    py_logger.write(f"File Name        : {file_name} \n")
+                    # Defining the destination location
+                    # Printing confirmation of success
+                    destination=os.path.join(dst_path,file_name)
+                    shutil.move(file_path, destination)
+                    # Printing a confirmation
+                    print(f"{file_name} has been successfully moved: {destination}")
+                    # Writing a confirmation to the log file for the renamed file
+                    py_logger.write(f"{dt_now}: `move_file()` : {file_name} from {dst_path} to {src_path} \n")
             else:
                 print(f"The file {file_path} does not exist.")
         else:
             print(f"ERROR: Source {src_path} is an invalid directory.")
     else:
         print(f"ERROR: Destination {dst_path} is an invalid directory.")
+
+# Move multiple files
 
 def move_files(dst_path, src_path, file_type):
     """
@@ -96,12 +116,26 @@ def move_files(dst_path, src_path, file_type):
     # TO DO:
     # Add support for multiple file types.
     
+        # Getting the date in YYYY-MM-DD format &
+    # the time in HH:MM format. Both are used for
+    # naming the log file. The HH:MM is used to
+    # prevent files being overridden
+    today    = datetime.datetime.today().strftime('%Y-%m-%d')
+    run_time = str(datetime.datetime.now())[11:16].replace(":","_")
     # Validating the destination
     if os.path.isdir(dst_path):
         # Validating the source
         if os.path.isdir(src_path):
+           # Creating a .txt file to act as our log file
+           with open(f"logs/{today}-{run_time}-move_files-log.txt", "w") as py_logger:
+            # Adding the location of the name dictionary & files to be renamed
+            py_logger.write(f"File Type        : {file_type} \n")
+            py_logger.write(f"Source Path      : {src_path} \n")
+            py_logger.write(f"Destination Path : {dst_path} \n")
             # Looping through the source directory
             for file in os.listdir(src_path):
+                # Getting the exact time that each loop runs at
+                dt_now=datetime.datetime.now()
                 # Getting the file name and type for each
                 file_name=os.fsdecode(file)
                 # Selecting the files that match input
@@ -110,14 +144,16 @@ def move_files(dst_path, src_path, file_type):
                     source=os.path.join(src_path,file_name)
                     destination=os.path.join(dst_path,file_name)
                     shutil.move(source,destination)
+                    # Printing a confirmation
                     print(f"{file_name} successfully moved to {dst_path}")
-                else:
-                    print(f"ERROR: File type '{file_type}' not found in {src_path}.")
-                    break
+                    # Writing a confirmation to the log file for each renamed file
+                    py_logger.write(f"{dt_now}: `move_files()` : {file} from {src_path} to {dst_path} \n")
         else:
             print(f"ERROR: Source {src_path} is an invalid directory.")
     else:
          print(f"ERROR: Destination {dst_path} is an invalid directory.")
+
+# Rename a single file
 
 def rename_file(path, old_name, new_name):
     """
@@ -133,12 +169,20 @@ def rename_file(path, old_name, new_name):
 
     Returns:
     --------
-    N/A; a confirmation that the rename was successful
+    A log file in `/logs` with the date, time, and function name in the title of the file; prints confirmation.
     """
+    # `rename_files()` is preferred
+
     # TO DO
     # Add support to validate file extensions are equal
     # Add support to validate file path exists
     
+        # Getting the date in YYYY-MM-DD format &
+    # the time in HH:MM format. Both are used for
+    # naming the log file. The HH:MM is used to
+    # prevent files being overridden
+    today    = datetime.datetime.today().strftime('%Y-%m-%d')
+    run_time = str(datetime.datetime.now())[11:16].replace(":","_")
     # Creating file paths
     old_file = os.path.join(path, old_name)
     new_file = os.path.join(path, new_name)
@@ -146,13 +190,26 @@ def rename_file(path, old_name, new_name):
     if not os.path.isfile(new_file):
         # Validating the existing file exists
         if os.path.isfile(old_file):
-            # os.replace is preferred to `os.rename` in Python versions >3.3
-            os.replace(old_file, new_file)
-            print(f"{old_name} has been renamed {new_name}")
-        else:
+            # Creating a .txt file to act as our log file
+            with open(f"logs/{today}-{run_time}-rename_file-log.txt", "w") as py_logger:
+                # Getting the exact time that each loop runs at
+                dt_now=datetime.datetime.now()
+                # Adding the path, new, and old file names to the log file
+                py_logger.write(f"File Location : {path} \n")
+                py_logger.write(f"Old File Name : {old_name} \n")
+                py_logger.write(f"New File Name : {new_name} \n")
+                # os.replace is preferred to `os.rename` in Python versions >3.3
+                os.replace(old_file, new_file)
+                # Printing a confirmation
+                print(f"{old_name} has been renamed {new_name}")
+                # Writing a confirmation to the log file for the renamed file
+                py_logger.write(f"{dt_now}: `rename_file()` :{old_name} has been renamed to: {new_name} \n")
+        else: 
             print(f"ERROR: {old_name} does not exist in {path}")
     else:
         print(f"ERROR: {new_name} already exists in {path}")
+
+# Rename multiple files
 
 def rename_files(file_path, name_path, name_csv):
     """
@@ -166,9 +223,11 @@ def rename_files(file_path, name_path, name_csv):
     ------------
     Reads the specified .csv file and renames files in the file_path based on the values in the .csv.
 
+    The name of the .csv file does not matter, but it must have two columns called `old_name` and `new_name`.
+
     Returns:
     --------
-    N/A; prints a confirmation for each file renamed successfully
+    A log file in `/logs` with the date, time, and function name in the title of the file; prints confirmation.
     """
     # TO DO
     # Add a check to make sure that
@@ -176,31 +235,48 @@ def rename_files(file_path, name_path, name_csv):
     # not already exist in the
     # `file_path` location.
 
+    # Getting the date in YYYY-MM-DD format &
+    # the time in HH:MM format. Both are used for
+    # naming the log file. The HH:MM is used to
+    # prevent files being overridden
+    today    = datetime.datetime.today().strftime('%Y-%m-%d')
+    run_time = str(datetime.datetime.now())[11:16].replace(":","_")
     # Creating file path to name_csv
     names = os.path.join(name_path, name_csv)
     # Making sure it exists
     if os.path.isfile(names):
         # Reading the .csv in
-        # Converting to memory
+        # Converting to dictionary
         name_df=pd.read_csv(names)
         # .csv must have those two column headers
         name_dict=dict(zip(name_df["old_name"], name_df["new_name"]))
-        # Looping through the directory where the files to be renamed are
-        for file in os.listdir(file_path):
-            # Finding the ones that are also key values
-            # Ignores files that aren't specified to be renamed
-            if file in name_dict.keys():
-                # Extracting the value from the key:value pair
-                # Renaming the file(s)
-                value=name_dict.get(file)
-                old_name=os.path.join(file_path, file)
-                new_name=os.path.join(file_path, value)
-                # `os.replace` is preferred to `os.rename` in Python versions >3.3
-                os.replace(old_name, new_name)
-                # Printing confirmation
-                print(f"{file} has been renamed {value}")
+        # Creating a .txt file to act as our log file
+        with open(f"logs/{today}-{run_time}-rename_files-log.txt", "w") as py_logger:
+            # Adding the location of the name dictionary & files to be renamed
+            py_logger.write(f"File Location        : {file_path} \n")
+            py_logger.write(f"File Mapping Location: {name_path} \n")
+            # Looping through the directory where the files to be renamed are
+            for file in os.listdir(file_path):
+                # Getting the exact time that each loop runs at
+                dt_now=datetime.datetime.now()
+                # Finding the ones that are also key values
+                # Ignores files that aren't specified to be renamed
+                if file in name_dict.keys():
+                    # Extracting the value from the key:value pair
+                    # Renaming the file(s)
+                    value=name_dict.get(file)
+                    old_name=os.path.join(file_path, file)
+                    new_name=os.path.join(file_path, value)
+                     # `os.replace` is preferred to `os.rename` in Python versions >3.3
+                    os.replace(old_name, new_name)
+                    # Printing confirmation
+                    print(f"{file} has been renamed {value}")
+                    # Writing a confirmation to the log file for each renamed file
+                    py_logger.write(f"{dt_now}: `rename_files()` :{file} has been renamed to: {value} \n")
     else:
         print(f"ERROR: {names} is not a valid file path")
+
+# Compare two files
 
 def compare_files_simple(file_a, file_b):
     """
