@@ -1,0 +1,7 @@
+File Location        : C:/Users/andre/Desktop/Stuff/Dummy_Files 
+File Mapping Location: C:/Users/andre/Desktop/Stuff/Dummy_Files 
+2025-09-02 13:15:47.495136: `rename_files()` :RDS20250827_01.csv has been renamed to: test_rename_1.csv 
+2025-09-02 13:15:47.497060: `rename_files()` :RDS20250827_02.csv has been renamed to: test_rename_2.csv 
+2025-09-02 13:15:47.498905: `rename_files()` :RDS20250827_03.csv has been renamed to: test_rename_3.csv 
+2025-09-02 13:15:47.499975: `rename_files()` :RDS20250827_04.csv has been renamed to: test_rename_4.csv 
+2025-09-02 13:15:47.499975: `rename_files()` :RDS20250827_05.csv has been renamed to: test_rename_5.csv 
