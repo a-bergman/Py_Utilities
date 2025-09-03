@@ -18,6 +18,8 @@ For these functions to run properly you should have the following installed:
 - shutil
 - pandas
 - filecmp
+- hashlib
+- collections
 
 -----
 
@@ -30,6 +32,7 @@ For these functions to run properly you should have the following installed:
 | `rename_file`          | Renames a file specified by name                                     | Yes  |
 | `rename_files`         | Renames files using names provided in a .csv file                    | Yes  |
 | `compare_files_simple` | Compares two files to see if they are identical or not               | No   |
+| `dir_duplicate_check`  | Loops through a directory and checks for any duplicates              | Yes  |
 
 -----
 
@@ -65,6 +68,7 @@ This repo is still a work in progress: code and/or formatting is added on a day-
 
 * `py_workspace_utils.py`
 
+    - 2025-09-93 - Added `dir_duplicate_check()`; updated log file code for each; updated formatting in `py_workspace_utils.py`; updated `README.md`
     - 2025-09-02 - Added code that creates a `log.txt` for every function that modifies a file; updated docstrings/comments in `py_workspace_utils.py`; updated `README.md`
     - 2025-08-29 - Added `rename_files()` & `compare_files_simple()`; updated docstrings/comments in `py_workspace_utils.py`; updated `README.md`
     - 2025-08-28 - Added `rename_file()`; updated Road Map section in `README.md`
