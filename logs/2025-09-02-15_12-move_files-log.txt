@@ -1,5 +1,0 @@
-File Type        : .json 
-Source Path      : C:/Users/andre/Desktop/Stuff/Dummy_Files 
-Destination Path : C:/Users/andre/Documents/Sample 
-2025-09-02 15:12:34.319334: `move_files()` :json_test_rename_1.json from C:/Users/andre/Desktop/Stuff/Dummy_Files to C:/Users/andre/Documents/Sample 
-2025-09-02 15:12:34.328052: `move_files()` :RDS20250827_07.json from C:/Users/andre/Desktop/Stuff/Dummy_Files to C:/Users/andre/Documents/Sample 
