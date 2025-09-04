@@ -1,6 +1,6 @@
 # Py_Utilities - Python Functions For Personal/Work Help
 
-Multiple Python modules containing functions to help deal with tedious manual tasks.
+Python modules and scripts containing functions to help deal with tedious manual tasks.
 
 -----
 
@@ -23,7 +23,9 @@ For these functions to run properly you should have the following installed:
 
 -----
 
-## `py_workspace_utils.py` Contents
+## Contents
+
+### Module -  `py_workspace_utils.py` Contents
 
 | Function               | Description                                                          | Log? |
 |:-----------------------|:---------------------------------------------------------------------|:----:|
@@ -34,12 +36,30 @@ For these functions to run properly you should have the following installed:
 | `compare_files_simple` | Compares two files to see if they are identical or not               | No   |
 | `dir_duplicate_check`  | Loops through a directory and checks for any duplicates              | Yes  |
 
+## Script(s)
+
+### Script -  `py_file_organizer.py`
+
+| Function                   | Description                                                          | Log? |
+|:---------------------------|:---------------------------------------------------------------------|:----:|
+| `create_new_directories()` | Moves a file specified by name                                       | TBA  |
+| `py_file_organizer()`      | Loops through a directory and moves all files of the specified type  | TBA  |
+
 -----
 
 ## How To Use
 
-- `py_workspace_utils.py`
-    - Create a local branch and modify as desired. However I *strongly* recommend creating a local copy outside of a version  controlled directory for regular use: modifications to an .ipynb file or the log folder probably shouldn't be tracked in Git.
+### Script(s)
+
+- Copy `py_file_organizer.py` to the folder you will be organizing
+- Update: file extensions, directories, and the `py_file_organizer()` function itself
+- Open your command line and navigate to your directory `cd Desktop\Data\Messy_Folder`
+- Run `python py_file_organizer.py`
+- Visually validate the results
+
+### Module(s)
+
+- Create a local branch or clone and modify as desired. Additionally, I *strongly* recommend creating a local copy outside of your version  controlled location for regular use: modifications to an .ipynb file or the log folder probably shouldn't be tracked in Git.
 
 
 -----
@@ -52,9 +72,10 @@ Pull requests are welcome, but for any major issues please open an issue first t
 
 ## Road Map
 
-- Create module versions for cmd use
-- Improved error checking across all functions
-- ~~Adding logging for each function for tracking purposes~~
+- [ ] Create versions of `py_workspace_utils.py` for cmd use.
+- [ ] Improved error checking across all functions.
+- [X] Adding logging for each function for tracking purposes.
+- [X] Create script to organize directories.
 
 -----
 
@@ -65,6 +86,9 @@ This repo is still a work in progress: code and/or formatting is added on a day-
 -----
 
 ## Latest Updates
+
+* `py_file_organizer.py`
+    - 2025-09-04 - Added `py_file_organizer.py`; updated README.md
 
 * `py_workspace_utils.py`
 
