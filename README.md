@@ -42,8 +42,8 @@ For these functions to run properly you should have the following installed:
 
 | Function                   | Description                                                          | Log? |
 |:---------------------------|:---------------------------------------------------------------------|:----:|
-| `create_new_directories()` | Moves a file specified by name                                       | TBA  |
-| `py_file_organizer()`      | Loops through a directory and moves all files of the specified type  | TBA  |
+| `create_new_directories()` | Moves a file specified by name                                       | Yes  |
+| `file_organizer()`         | Loops through a directory and moves all files of the specified type  | Yes  |
 
 -----
 
@@ -88,11 +88,12 @@ This repo is still a work in progress: code and/or formatting is added on a day-
 ## Latest Updates
 
 * `py_file_organizer.py`
+    - 2025-09-05 - Added code to create log files; updated README.md
     - 2025-09-04 - Added `py_file_organizer.py`; updated README.md
 
 * `py_workspace_utils.py`
 
-    - 2025-09-93 - Added `dir_duplicate_check()`; updated log file code for each; updated formatting in `py_workspace_utils.py`; updated `README.md`
+    - 2025-09-03 - Added `dir_duplicate_check()`; updated log file code for each; updated formatting in `py_workspace_utils.py`; updated `README.md`
     - 2025-09-02 - Added code that creates a `log.txt` for every function that modifies a file; updated docstrings/comments in `py_workspace_utils.py`; updated `README.md`
     - 2025-08-29 - Added `rename_files()` & `compare_files_simple()`; updated docstrings/comments in `py_workspace_utils.py`; updated `README.md`
     - 2025-08-28 - Added `rename_file()`; updated Road Map section in `README.md`
