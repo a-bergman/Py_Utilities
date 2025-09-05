@@ -84,7 +84,7 @@ def file_organizer():
     # naming the log file. The HH:MM is used to
     # prevent files being overridden
     today=datetime.datetime.today().strftime('%Y-%m-%d')
-    run_time=str(datetime.datetime.now())[11:16].replace(":","_")
+    run_time=str(datetime.datetime.now())[11:16].replace(":","꞉")
     # Creating a .txt file to act as our log file
     # Analyst needs to change the filepath locally
     with open(f"C:/Users/andre/Documents/Logs/{today}-{run_time}-py_file_organizer-log.txt","w") as py_logger:
