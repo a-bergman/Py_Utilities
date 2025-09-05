@@ -65,7 +65,7 @@ def move_file(dst_path,src_path,file_name):
     # naming the log file. The HH:MM is used to
     # prevent files being overridden
     today=datetime.datetime.today().strftime('%Y-%m-%d')
-    run_time=str(datetime.datetime.now())[11:16].replace(":","_")
+    run_time=str(datetime.datetime.now())[11:16].replace(":","꞉")
     # Defining the full path to the file being moved
     file_path=os.path.join(src_path,file_name)
      # Making sure the destination is valid
@@ -75,7 +75,7 @@ def move_file(dst_path,src_path,file_name):
             # Making sure the file exists in the source
             if os.path.isfile(file_path):
                 # Creating a .txt file to act as our log file
-                 with open(f"logs/{today}-{run_time}-move_file-log.txt","w") as py_logger:
+                 with open(f"logs/{today}@{run_time}-move_file-log.txt","w") as py_logger:
                     # Getting the exact time that each code runs at
                     dt_now=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                     # Adding the path, new, and old file names to the log file
@@ -132,13 +132,13 @@ def move_files(dst_path, src_path, file_type):
     # naming the log file. The HH:MM is used to
     # prevent files being overridden
     today=datetime.datetime.today().strftime('%Y-%m-%d')
-    run_time=str(datetime.datetime.now())[11:16].replace(":","_")
+    run_time=str(datetime.datetime.now())[11:16].replace(":","꞉")
     # Validating the destination
     if os.path.isdir(dst_path):
         # Validating the source
         if os.path.isdir(src_path):
            # Creating a .txt file to act as our log file
-           with open(f"logs/{today}-{run_time}-move_files-log.txt","w") as py_logger:
+           with open(f"logs/{today}@{run_time}-move_files-log.txt","w") as py_logger:
             # Adding the location of the name dictionary & files to be renamed
             py_logger.write(f"Day              : {today} @ {str(datetime.datetime.now())[11:16]} \n")
             py_logger.write(f"Analyst          : {analyst} \n")
@@ -196,7 +196,7 @@ def rename_file(path, old_name, new_name):
     # naming the log file. The HH:MM is used to
     # prevent files being overridden
     today=datetime.datetime.today().strftime('%Y-%m-%d')
-    run_time=str(datetime.datetime.now())[11:16].replace(":","_")
+    run_time=str(datetime.datetime.now())[11:16].replace(":","꞉")
     # Creating file paths
     old_file=os.path.join(path, old_name)
     new_file=os.path.join(path, new_name)
@@ -205,7 +205,7 @@ def rename_file(path, old_name, new_name):
         # Validating the existing file exists
         if os.path.isfile(old_file):
             # Creating a .txt file to act as our log file
-            with open(f"logs/{today}-{run_time}-rename_file-log.txt","w") as py_logger:
+            with open(f"logs/{today}@{run_time}-rename_file-log.txt","w") as py_logger:
                 # Getting the exact time that each loop runs at
                 dt_now=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                 # Adding the path, new, and old file names to the log file
@@ -257,7 +257,7 @@ def rename_files(file_path, name_path, name_csv):
     # naming the log file. The HH:MM is used to
     # prevent files being overridden
     today=datetime.datetime.today().strftime('%Y-%m-%d')
-    run_time=str(datetime.datetime.now())[11:16].replace(":","_")
+    run_time=str(datetime.datetime.now())[11:16].replace(":","꞉")
     # Creating file path to name_csv
     names=os.path.join(name_path, name_csv)
     # Making sure it exists
@@ -268,7 +268,7 @@ def rename_files(file_path, name_path, name_csv):
         # .csv must have those two column headers
         name_dict=dict(zip(name_df["old_name"],name_df["new_name"]))
         # Creating a .txt file to act as our log file
-        with open(f"logs/{today}-{run_time}-rename_files-log.txt","w") as py_logger:
+        with open(f"logs/{today}@{run_time}-rename_files-log.txt","w") as py_logger:
             # Adding the location of the name dictionary & files to be renamed
             py_logger.write(f"Day                  : {today} @ {str(datetime.datetime.now())[11:16]} \n")
             py_logger.write(f"Analyst              : {analyst} \n")
@@ -355,7 +355,7 @@ def dir_duplicate_check(path):
     # naming the log file. The HH:MM is used to
     # prevent files being overridden
     today=datetime.datetime.today().strftime('%Y-%m-%d')
-    run_time=str(datetime.datetime.now())[11:16].replace(":","_")
+    run_time=str(datetime.datetime.now())[11:16].replace(":","꞉")
     # Defining the full path to the file being moved
     # Create an empty dictionary
     file_dict=dict()
@@ -377,7 +377,7 @@ def dir_duplicate_check(path):
     results=[key for key,value in file_dict.items() if count_dict[value]>1]
     # Writing a confirmation to the log file for the renamed file
     # No files are being modified, but it is good to have a record for posterity
-    with open(f"logs/{today}-{run_time}-dir_duplicate_check-record.txt", "w") as py_logger:
+    with open(f"logs/{today}@{run_time}-dir_duplicate_check-record.txt", "w") as py_logger:
         dt_now=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         py_logger.write(f"Day          : {today} @ {str(datetime.datetime.now())[11:16]} \n")
         py_logger.write(f"Analyst      : {analyst} \n")
