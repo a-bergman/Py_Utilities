@@ -12,7 +12,7 @@ import datetime
 analyst = "andrew.bergman"
 
 """
-This script is currently (as of 9/25/2025) configured to handle files I happened to have on hand. The overall
+This script is currently (as of 9/05/2025) configured to handle files I happened to have on hand. The overall
 idea is that this will need to be modified depending on the file is pasted in to. I.e. the analyst will need
 to update/add/remove the file extensions, directory names, and the list of directories in lines 13 to 26 as
 well as in `py_file_organizer()` itself.
@@ -86,6 +86,7 @@ def file_organizer():
     today=datetime.datetime.today().strftime('%Y-%m-%d')
     run_time=str(datetime.datetime.now())[11:16].replace(":","_")
     # Creating a .txt file to act as our log file
+    # Analyst needs to change the filepath locally
     with open(f"C:/Users/andre/Documents/Logs/{today}-{run_time}-py_file_organizer-log.txt","w") as py_logger:
         py_logger.write(f"Day              : {today} @ {str(datetime.datetime.now())[11:16]} \n")
         py_logger.write(f"Analyst          : {analyst} \n")
