@@ -1,8 +1,8 @@
 """
 This module contains various functions designed to help with tedious manipulation of files.
 
-Last Update   : 2025-09-03
-Last Update By: a-bergman
+Last Update   : 2025-09-06
+Last Update By: andrew.bergman
 
 """
 
@@ -21,10 +21,10 @@ parameter : definition : type : possible values (if applicable)
 """
 
 ## TO DO - full module testing
-## TO DO - implement analyst arg into functions with module testing
 ## TO DO - update log file name generation -> fix time :
 
-# analyst = a-bergman
+# Analyst should update with their name in a similar format
+analyst = "andrew.bergman"
  
 #  Standard Imports
 import os
@@ -80,7 +80,7 @@ def move_file(dst_path,src_path,file_name):
                     dt_now=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                     # Adding the path, new, and old file names to the log file
                     py_logger.write(f"Day              : {today} @ {str(datetime.datetime.now())[11:16]} \n")
-                    py_logger.write(f"Analyst          : To be added \n")
+                    py_logger.write(f"Analyst          : {analyst} \n")
                     py_logger.write(f"Function Run     : move_file() \n\n")
                     py_logger.write(f"Source Path      : {src_path} \n")
                     py_logger.write(f"Destination Path : {dst_path} \n")
@@ -141,7 +141,7 @@ def move_files(dst_path, src_path, file_type):
            with open(f"logs/{today}-{run_time}-move_files-log.txt","w") as py_logger:
             # Adding the location of the name dictionary & files to be renamed
             py_logger.write(f"Day              : {today} @ {str(datetime.datetime.now())[11:16]} \n")
-            py_logger.write(f"Analyst          : To be added \n")
+            py_logger.write(f"Analyst          : {analyst} \n")
             py_logger.write(f"Function Run     : move_files() \n\n")
             py_logger.write(f"Source Path      : {src_path} \n")
             py_logger.write(f"Destination Path : {dst_path} \n")
@@ -210,7 +210,7 @@ def rename_file(path, old_name, new_name):
                 dt_now=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                 # Adding the path, new, and old file names to the log file
                 py_logger.write(f"Day           : {today} @ {str(datetime.datetime.now())[11:16]} \n")
-                py_logger.write(f"Analyst       : To be added \n")
+                py_logger.write(f"Analyst       : {analyst} \n")
                 py_logger.write(f"Function Run  : rename_file() \n\n")
                 py_logger.write(f"File Location : {path} \n")
                 py_logger.write(f"Old File Name : {old_name} \n")
@@ -271,7 +271,7 @@ def rename_files(file_path, name_path, name_csv):
         with open(f"logs/{today}-{run_time}-rename_files-log.txt","w") as py_logger:
             # Adding the location of the name dictionary & files to be renamed
             py_logger.write(f"Day                  : {today} @ {str(datetime.datetime.now())[11:16]} \n")
-            py_logger.write(f"Analyst              : To be added \n")
+            py_logger.write(f"Analyst              : {analyst} \n")
             py_logger.write(f"Function Run         : rename_files() \n")
             py_logger.write(f"File Location        : {file_path} \n")
             py_logger.write(f"File Mapping Location: {name_path} \n")
@@ -380,7 +380,7 @@ def dir_duplicate_check(path):
     with open(f"logs/{today}-{run_time}-dir_duplicate_check-record.txt", "w") as py_logger:
         dt_now=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         py_logger.write(f"Day          : {today} @ {str(datetime.datetime.now())[11:16]} \n")
-        py_logger.write(f"Analyst      : To be added \n")
+        py_logger.write(f"Analyst      : {analyst} \n")
         py_logger.write(f"Function Run : dir_duplicate_check() \n\n")
         py_logger.write(f"Directory    : {path} \n\n")
         # {results} will be an empty list in the file if there aren't duplicates
