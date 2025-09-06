@@ -1,7 +1,7 @@
 """
 This module contains various functions designed to help with tedious manipulation of files.
 
-Last Update   : 2025-09-06
+Last Update   : 2025-09-07
 Last Update By: andrew.bergman
 
 """
@@ -92,7 +92,7 @@ def move_file(dst_path,src_path,file_name):
                     # Printing a confirmation
                     print(f"{file_name} has been successfully moved: {destination}")
                     # Writing a confirmation to the log file for the renamed file
-                    py_logger.write(f">> {dt_now}: {file_name} from {dst_path} to {src_path} \n")
+                    py_logger.write(f">> {dt_now} - {file_name} moved from {dst_path} to {src_path} \n")
             else:
                 print(f"The file {file_path} does not exist.")
         else:
@@ -161,7 +161,7 @@ def move_files(dst_path, src_path, file_type):
                     # Printing a confirmation
                     print(f"{file_name} successfully moved to {dst_path}")
                     # Writing a confirmation to the log file for each renamed file
-                    py_logger.write(f">> {dt_now}: {file} from {src_path} to {dst_path} \n")
+                    py_logger.write(f">> {dt_now} - {file} moved from {src_path} to {dst_path} \n")
         else:
             print(f"ERROR: Source {src_path} is an invalid directory.")
     else:
@@ -191,7 +191,7 @@ def rename_file(path, old_name, new_name):
     # Add support to validate file extensions are equal
     # Add support to validate file path exists
     
-        # Getting the date in YYYY-MM-DD format &
+    # Getting the date in YYYY-MM-DD format &
     # the time in HH:MM format. Both are used for
     # naming the log file. The HH:MM is used to
     # prevent files being overridden
@@ -220,7 +220,7 @@ def rename_file(path, old_name, new_name):
                 # Printing a confirmation
                 print(f"{old_name} has been renamed {new_name}")
                 # Writing a confirmation to the log file for the renamed file
-                py_logger.write(f">> {dt_now}: {old_name} has been renamed to: {new_name} \n")
+                py_logger.write(f">> {dt_now} - {old_name} has been renamed to: {new_name} \n")
         else: 
             print(f"ERROR: {old_name} does not exist in {path}")
     else:
@@ -272,7 +272,7 @@ def rename_files(file_path, name_path, name_csv):
             # Adding the location of the name dictionary & files to be renamed
             py_logger.write(f"Day                  : {today} @ {str(datetime.datetime.now())[11:16]} \n")
             py_logger.write(f"Analyst              : {analyst} \n")
-            py_logger.write(f"Function Run         : rename_files() \n")
+            py_logger.write(f"Function Run         : rename_files() \n\n")
             py_logger.write(f"File Location        : {file_path} \n")
             py_logger.write(f"File Mapping Location: {name_path} \n")
             py_logger.write(f"File Mapping .csv    : {name_csv} \n\n")
@@ -293,7 +293,7 @@ def rename_files(file_path, name_path, name_csv):
                     # Printing confirmation
                     print(f"{file} has been renamed {value}")
                     # Writing a confirmation to the log file for each renamed file
-                    py_logger.write(f">> {dt_now}: {file} has been renamed to: {value} \n")
+                    py_logger.write(f">> {dt_now} - {file} has been renamed to: {value} \n")
     else:
         print(f"ERROR: {names} is not a valid file path")
 
@@ -377,14 +377,14 @@ def dir_duplicate_check(path):
     results=[key for key,value in file_dict.items() if count_dict[value]>1]
     # Writing a confirmation to the log file for the renamed file
     # No files are being modified, but it is good to have a record for posterity
-    with open(f"logs/{today}@{run_time}-dir_duplicate_check-record.txt", "w") as py_logger:
+    with open(f"logs/{today}@{run_time}-dir_duplicate_check-record.txt","w") as py_logger:
         dt_now=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         py_logger.write(f"Day          : {today} @ {str(datetime.datetime.now())[11:16]} \n")
         py_logger.write(f"Analyst      : {analyst} \n")
         py_logger.write(f"Function Run : dir_duplicate_check() \n\n")
         py_logger.write(f"Directory    : {path} \n\n")
         # {results} will be an empty list in the file if there aren't duplicates
-        py_logger.write(f">> {dt_now}: Duplicates = {results} \n\n")
+        py_logger.write(f">> {dt_now} - Duplicates = {results} \n\n")
     # Print message for the user
     print(f">> Checking {path} For Duplicates",sep="\n")
     print(f">> No File Names Will Be Printed If There Are None",sep="\n")
