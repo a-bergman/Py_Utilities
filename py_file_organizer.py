@@ -2,7 +2,7 @@ import os
 import shutil
 import datetime
 
-## Last Updated    : 2025-09-06
+## Last Updated    : 2025-09-07
 ## Last Updated By : a-bergman
 
 ## TO DO
@@ -107,24 +107,24 @@ def file_organizer():
                 destination=os.path.join(path,data_dir,file)
                 shutil.move(source,destination)
                 print(f"{file} has been moved to {os.path.join(path,data_dir)}")
-                py_logger.write(f">> {dt_now}: {file} moved to {os.path.join(path,data_dir)} \n")
+                py_logger.write(f">> {dt_now} - {file} moved to {os.path.join(path,data_dir)} \n")
             if file.endswith(tuple(code_ext)):
                 source=os.path.join(path,file)
                 destination=os.path.join(path,code_dir,file)
                 shutil.move(source,destination)
                 print(f"{file} has been moved to {os.path.join(path,code_dir)}")
-                py_logger.write(f">> {dt_now}: {file} moved to {os.path.join(path,code_dir)} \n")
+                py_logger.write(f">> {dt_now} - {file} moved to {os.path.join(path,code_dir)} \n")
             if file.endswith(tuple(txt_ext)):
                 source=os.path.join(path,file)
                 destination=os.path.join(path,txt_dir,file)
                 shutil.move(source,destination)
                 print(f"{file} has been moved to {os.path.join(path,txt_dir)}")
-                py_logger.write(f">> {dt_now}: {file} moved to {os.path.join(path,txt_dir)} \n")
+                py_logger.write(f">> {dt_now} - {file} moved to {os.path.join(path,txt_dir)} \n")
             if file.endswith(tuple(msft_ext)):
                 source=os.path.join(path,file)
                 destination=os.path.join(path,msft_dir,file)
                 shutil.move(source,destination)
                 print(f"{file} has been moved to {os.path.join(path,msft_dir)}")
-                py_logger.write(f">> {dt_now}: {file} moved to {os.path.join(path,msft_dir)} \n")
+                py_logger.write(f">> {dt_now} - {file} moved to {os.path.join(path,msft_dir)} \n")
 
 file_organizer()
