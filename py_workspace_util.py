@@ -1,7 +1,7 @@
 """
 This module contains various functions designed to help with tedious manipulation of files.
 
-Last Update   : 2025-09-07
+Last Update   : 2025-09-08
 Last Update By: andrew.bergman
 
 """
@@ -92,7 +92,7 @@ def move_file(dst_path,src_path,file_name):
                     # Printing a confirmation
                     print(f"{file_name} has been successfully moved: {destination}")
                     # Writing a confirmation to the log file for the renamed file
-                    py_logger.write(f">> {dt_now} - {file_name} moved from {dst_path} to {src_path} \n")
+                    py_logger.write(f"> {dt_now} - INFO: {file_name} moved from {dst_path} to {src_path} \n")
             else:
                 print(f"The file {file_path} does not exist.")
         else:
@@ -161,7 +161,7 @@ def move_files(dst_path, src_path, file_type):
                     # Printing a confirmation
                     print(f"{file_name} successfully moved to {dst_path}")
                     # Writing a confirmation to the log file for each renamed file
-                    py_logger.write(f">> {dt_now} - {file} moved from {src_path} to {dst_path} \n")
+                    py_logger.write(f"> {dt_now} - INFO: {file} moved from {src_path} to {dst_path} \n")
         else:
             print(f"ERROR: Source {src_path} is an invalid directory.")
     else:
@@ -220,7 +220,7 @@ def rename_file(path, old_name, new_name):
                 # Printing a confirmation
                 print(f"{old_name} has been renamed {new_name}")
                 # Writing a confirmation to the log file for the renamed file
-                py_logger.write(f">> {dt_now} - {old_name} has been renamed to: {new_name} \n")
+                py_logger.write(f"> {dt_now} - INFO: {old_name} has been renamed to: {new_name} \n")
         else: 
             print(f"ERROR: {old_name} does not exist in {path}")
     else:
@@ -293,7 +293,7 @@ def rename_files(file_path, name_path, name_csv):
                     # Printing confirmation
                     print(f"{file} has been renamed {value}")
                     # Writing a confirmation to the log file for each renamed file
-                    py_logger.write(f">> {dt_now} - {file} has been renamed to: {value} \n")
+                    py_logger.write(f"> {dt_now} - INFO: {file} has been renamed to: {value} \n")
     else:
         print(f"ERROR: {names} is not a valid file path")
 
@@ -384,7 +384,7 @@ def dir_duplicate_check(path):
         py_logger.write(f"Function Run : dir_duplicate_check() \n\n")
         py_logger.write(f"Directory    : {path} \n\n")
         # {results} will be an empty list in the file if there aren't duplicates
-        py_logger.write(f">> {dt_now} - Duplicates = {results} \n\n")
+        py_logger.write(f"> {dt_now} - INFO: Duplicates = {results} \n\n")
     # Print message for the user
     print(f">> Checking {path} For Duplicates",sep="\n")
     print(f">> No File Names Will Be Printed If There Are None",sep="\n")
