@@ -2,11 +2,13 @@ import os
 import shutil
 import datetime
 
-## Last Updated    : 2025-09-07
+## Last Updated    : 2025-09-08
 ## Last Updated By : a-bergman
 
 ## TO DO
 # Figure out a system to deal with duplicate files
+
+# Logs stored in: `C:/Users/andre/Documents/Logs/`
 
 # Analyst should add their name in a similar format
 analyst = "andrew.bergman"
