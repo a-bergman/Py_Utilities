@@ -42,8 +42,22 @@ For these functions to run properly you should have the following installed:
 
 | Function                   | Description                                                          | Log? |
 |:---------------------------|:---------------------------------------------------------------------|:----:|
-| `create_new_directories()` | Moves a file specified by name                                       | Yes  |
-| `file_organizer()`         | Loops through a directory and moves all files of the specified type  | Yes  |
+| `create_new_directories()` | Creates new directories based on file type                           | No   |
+| `file_organizer()`         | Loops through the cwd and moves files based on their type            | Yes  |
+
+### Script - `py_mdate_folder.py`
+
+| Function                   | Description                                                          | Log? |
+|:---------------------------|:---------------------------------------------------------------------|:----:|
+| `get_mdatetime()`          | Extracts mdate value for each file and saves unique values to a list | No   |
+| `create_new_directories()` | Creates new subdirectories for each unique mdate value               | Yes  |
+
+### Script - `py_date_organizer.py`
+
+| Function           | Description                                                                      | Log? |
+|:-------------------|:---------------------------------------------------------------------------------|:----:|
+| `date_organizer()` | Loops through the cwd and moves files to a new folder based on their mdate value | Yes  |
+
 
 -----
 
@@ -87,12 +101,17 @@ This repo is still a work in progress: code and/or formatting is added on a day-
 
 ## Latest Updates
 
+* `py_date_organizer.py`
+    - Added `py_date_organizer.py`; updated `README.md`
+
+* `py_mdate_folder.py`
+    - Added `py_mdate_folder.py`; updated `README.md`
+
 * `py_file_organizer.py`
-    - 2025-09-05 - Added code to create log files; updated README.md; updated naming scheme to use `꞉` for time to avoid using a colon
-    - 2025-09-04 - Added `py_file_organizer.py`; updated README.md
+    - 2025-09-05 - Added code to create log files; updated `README.md`; updated naming scheme to use `꞉` for time to avoid using a colon
+    - 2025-09-04 - Added `py_file_organizer.py`; updated `README.md`
 
 * `py_workspace_utils.py`
-
     - 2025-09-05 - Added analyst arg to log files; updated naming scheme to use `꞉` for time to avoid using a colon
     - 2025-09-03 - Added `dir_duplicate_check()`; updated log file code for each; updated formatting in `py_workspace_utils.py`; updated `README.md`
     - 2025-09-02 - Added code that creates a `log.txt` for every function that modifies a file; updated docstrings/comments in `py_workspace_utils.py`; updated `README.md`
