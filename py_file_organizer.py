@@ -66,6 +66,11 @@ def create_new_directories():
 # Creating the folders
 create_new_directories()
 
+# File types to ignore; always include `.py`
+file_ignore=[".py"]
+# Short name for files being ignored
+file_ignore_type="Python"
+
 # Function to organize files into the directories made with `create_new_directories()`
 def file_organizer():
     """
@@ -97,36 +102,41 @@ def file_organizer():
         py_logger.write(f"New Directories  : {directories} \n\n")
         # Looping through the files in the cwd
         for file in files:
-            # Getting the exact time that each loop runs at
-            dt_now=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            # Using a series of if statements on purpose
-            # `elif` would cause the code to stop, which is not desired
-            # `.endswith()` can take multiple inputs if they're passed as a tuple
-            # Each `if` essentially just adds the directory to the cwd
-            # The a confirmation is printed to the cmd line and then to the log file
-            if file.endswith(tuple(data_ext)):
-                source=os.path.join(path,file)
-                destination=os.path.join(path,data_dir,file)
-                shutil.move(source,destination)
-                print(f"{file} has been moved to {os.path.join(path,data_dir)}")
-                py_logger.write(f">> {dt_now} - {file} moved to {os.path.join(path,data_dir)} \n")
-            if file.endswith(tuple(code_ext)):
-                source=os.path.join(path,file)
-                destination=os.path.join(path,code_dir,file)
-                shutil.move(source,destination)
-                print(f"{file} has been moved to {os.path.join(path,code_dir)}")
-                py_logger.write(f">> {dt_now} - {file} moved to {os.path.join(path,code_dir)} \n")
-            if file.endswith(tuple(txt_ext)):
-                source=os.path.join(path,file)
-                destination=os.path.join(path,txt_dir,file)
-                shutil.move(source,destination)
-                print(f"{file} has been moved to {os.path.join(path,txt_dir)}")
-                py_logger.write(f">> {dt_now} - {file} moved to {os.path.join(path,txt_dir)} \n")
-            if file.endswith(tuple(msft_ext)):
-                source=os.path.join(path,file)
-                destination=os.path.join(path,msft_dir,file)
-                shutil.move(source,destination)
-                print(f"{file} has been moved to {os.path.join(path,msft_dir)}")
-                py_logger.write(f">> {dt_now} - {file} moved to {os.path.join(path,msft_dir)} \n")
+            if not file.endswith(tuple(file_ignore)):
+                # Getting the exact time that each loop runs at
+                dt_now=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                # Using a series of if statements on purpose
+                # `elif` would cause the code to stop, which is not desired
+                # `.endswith()` can take multiple inputs if they're passed as a tuple
+                # Each `if` essentially just adds the directory to the cwd
+                # The a confirmation is printed to the cmd line and then to the log file
+                if file.endswith(tuple(data_ext)):
+                    source=os.path.join(path,file)
+                    destination=os.path.join(path,data_dir,file)
+                    shutil.move(source,destination)
+                    print(f"{file} has been moved to {os.path.join(path,data_dir)}")
+                    py_logger.write(f"> {dt_now} - INFO: {file} moved to {os.path.join(path,data_dir)} \n")
+                if file.endswith(tuple(code_ext)):
+                    source=os.path.join(path,file)
+                    destination=os.path.join(path,code_dir,file)
+                    shutil.move(source,destination)
+                    print(f"{file} has been moved to {os.path.join(path,code_dir)}")
+                    py_logger.write(f">> {dt_now} - INFO: {file} moved to {os.path.join(path,code_dir)} \n")
+                if file.endswith(tuple(txt_ext)):
+                    source=os.path.join(path,file)
+                    destination=os.path.join(path,txt_dir,file)
+                    shutil.move(source,destination)
+                    print(f"{file} has been moved to {os.path.join(path,txt_dir)}")
+                    py_logger.write(f">> {dt_now} - INFO: {file} moved to {os.path.join(path,txt_dir)} \n")
+                if file.endswith(tuple(msft_ext)):
+                    source=os.path.join(path,file)
+                    destination=os.path.join(path,msft_dir,file)
+                    shutil.move(source,destination)
+                    print(f"{file} has been moved to {os.path.join(path,msft_dir)}")
+                    py_logger.write(f">> {dt_now} - INFO: {file} moved to {os.path.join(path,msft_dir)} \n")
+            else:
+                # Printing a warning for the files we ignore
+                print(f"WARN: ignoring {file_ignore_type} file {file} \n")
+                py_logger.write(f"> {dt_now} - WARN : Ignoring {file_ignore_type} file: {file} \n")
 
 file_organizer()
