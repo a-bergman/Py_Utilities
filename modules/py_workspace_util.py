@@ -1,7 +1,7 @@
 """
 This module contains various functions designed to help with tedious manipulation of files.
 
-Last Update   : 2025-09-08
+Last Update   : 2025-09-11
 Last Update By: andrew.bergman
 
 """
@@ -371,7 +371,7 @@ def dir_duplicate_check(path):
             file_hash=hashlib.md5(open(full_path,"rb").read()).hexdigest()
             file_dict[file]=file_hash
     # Creating a Counter
-    count_dict=Counter(unique.values())
+    count_dict=Counter(file_dict.values())
     # Extracting the dict values and counting
     # If the hash value is duplicated there are duplicate files then saving duplicates to a new variable
     results=[key for key,value in file_dict.items() if count_dict[value]>1]
