@@ -58,6 +58,29 @@ For these functions to run properly you should have the following installed:
 |:-------------------|:---------------------------------------------------------------------------------|:----:|
 | `date_organizer()` | Loops through the cwd and moves files to a new folder based on their mdate value | Yes  |
 
+### Script - `py_move_files.py`
+
+A version of `py_workspace_utils.move_files()` that can be run from the command line
+
+| Function       | Description                                             | Log? |
+|:---------------|:--------------------------------------------------------|:----:|
+| `move_files()` | Loops through a directory and checks for any duplicates | Yes  |
+
+### Script - `py_rename_files.py`
+
+A version of `py_workspace_utils.rename_files()` that can be run from the command line
+
+| Function       | Description                                             | Log? |
+|:---------------|:--------------------------------------------------------|:----:|
+| `rename_files` | Renames files using names provided in a .csv file       | Yes  |
+
+### Script - `py_dir_dup_check.py`
+
+A version of `py_workspace_utils.dir_duplicate_check()` that can be run from the command line
+
+| Function                | Description                                             | Log? |
+|:------------------------|:--------------------------------------------------------|:----:|
+| `dir_duplicate_check()` | Loops through a directory and checks for any duplicates | Yes  |
 
 -----
 
@@ -69,7 +92,7 @@ For these functions to run properly you should have the following installed:
 - Update: file extensions, directories, and the `py_file_organizer()` function itself
 - Open your command line and navigate to your directory `cd Desktop\Data\Messy_Folder`
 - Run `python py_file_organizer.py`
-- Visually validate the results
+- If you are running a script that takes arguments, you will need to run: `python py_move_files.py --arg1 --arg2 --arg3` with corresponding args
 
 ### Module(s)
 
@@ -86,8 +109,8 @@ Pull requests are welcome, but for any major issues please open an issue first t
 
 ## Road Map
 
-- [ ] Create versions of `py_workspace_utils.py` for cmd use.
 - [ ] Improved error checking across all functions.
+- [X] Create versions of `py_workspace_utils.py` for cmd use.
 - [X] Adding logging for each function for tracking purposes.
 - [X] Create script to organize directories.
 
@@ -101,6 +124,15 @@ This repo is still a work in progress: code and/or formatting is added on a day-
 
 ## Latest Updates
 
+* `py_rename_files.py`
+    - Added `py_rename_files.py`; updated `README.md`
+
+* `py_move_files.py`
+    - Added `py_move_files.py`; updated `README.md`
+
+* `py_dir_dup_check.py`
+    - Added `py_dir_dup_check.py`; updated `README.md`
+
 * `py_date_organizer.py`
     - Added `py_date_organizer.py`; updated `README.md`
 
@@ -112,6 +144,7 @@ This repo is still a work in progress: code and/or formatting is added on a day-
     - 2025-09-04 - Added `py_file_organizer.py`; updated `README.md`
 
 * `py_workspace_utils.py`
+    - 2025-09-11 - Correct var reference error in `dir_duplicate_check()`
     - 2025-09-05 - Added analyst arg to log files; updated naming scheme to use `꞉` for time to avoid using a colon
     - 2025-09-03 - Added `dir_duplicate_check()`; updated log file code for each; updated formatting in `py_workspace_utils.py`; updated `README.md`
     - 2025-09-02 - Added code that creates a `log.txt` for every function that modifies a file; updated docstrings/comments in `py_workspace_utils.py`; updated `README.md`
