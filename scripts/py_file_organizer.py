@@ -2,13 +2,15 @@ import os
 import shutil
 import datetime
 
-## Last Updated    : 2025-09-08
+## Last Updated    : 2025-11-18
 ## Last Updated By : a-bergman
 
 ## TO DO
 # Figure out a system to deal with duplicate files
 
-# Logs stored in: `C:/Users/andre/Documents/Logs/`
+# Analyst will need to update their paths
+# Logs stored in: `C:/Users/andre/Documents/Logs/` (Windows)
+# Logs stored in: `/home/abergman/Documents/Python Vault/Logs/` (Ubuntu)
 
 # Analyst should add their name in a similar format
 analyst = "andrew.bergman"
@@ -94,12 +96,12 @@ def file_organizer():
     run_time=str(datetime.datetime.now())[11:16].replace(":","꞉")
     # Creating a .txt file to act as our log file
     # Analyst needs to change the filepath locally
-    with open(f"C:/Users/andre/Documents/Logs/{today}-{run_time}-py_file_organizer-log.txt","w") as py_logger:
-        py_logger.write(f"Day              : {today} @ {str(datetime.datetime.now())[11:16]} \n")
-        py_logger.write(f"Analyst          : {analyst} \n")
-        py_logger.write(f"Script Run       : py_file_organizer.py: create_new_directories(); file_organizer() \n\n")
-        py_logger.write(f"Directory        : {path} \n")
-        py_logger.write(f"New Directories  : {directories} \n\n")
+    with open(f"/home/abergman/Documents/Python Vault/Logs/{today}-{run_time}-py_file_organizer-log.txt","w") as py_logger:
+        py_logger.write(f"Day..............: {today} @ {str(datetime.datetime.now())[11:16]} \n")
+        py_logger.write(f"Analyst..........: {analyst} \n")
+        py_logger.write(f"Script Run.......: py_file_organizer.py: create_new_directories(); file_organizer() \n\n")
+        py_logger.write(f"Directory........: {path} \n")
+        py_logger.write(f"New Directories..: {directories} \n\n")
         # Looping through the files in the cwd
         for file in files:
             if not file.endswith(tuple(file_ignore)):

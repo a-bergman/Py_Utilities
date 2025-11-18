@@ -5,10 +5,12 @@ import datetime
 import hashlib
 from collections import Counter
 
-## Last Updated    : 2025-09-11
+## Last Updated    : 2025-11-18
 ## Last Updated By : andrew-bergman
 
-# Logs stored in: `C:/Users/andre/Documents/Logs/` - should be updated by the analyst
+# Analyst will need to update their paths
+# Logs stored in: `C:/Users/andre/Documents/Logs/` (Windows)
+# Logs stored in: `/home/abergman/Documents/Python Vault/Logs/` (Ubuntu)
 
 ## TO DO
 # Figure out a system to deal with duplicate files
@@ -63,12 +65,12 @@ def dir_duplicate_check(path):
     # Writing a confirmation to the log file for the renamed file
     # No files are being modified, but it is good to have a record for posterity
     # Analyst should update the file path
-    with open(f"C:/Users/andre/Documents/Logs/{today}@{run_time}-dir_duplicate_check-record.txt","w") as py_logger:
+    with open(f"/home/abergman/Documents/Python Vault/Logs/{today}@{run_time}-dir_duplicate_check-record.txt","w") as py_logger:
         dt_now=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        py_logger.write(f"Day          : {today} @ {str(datetime.datetime.now())[11:16]} \n")
-        py_logger.write(f"Analyst      : {analyst} \n")
-        py_logger.write(f"Script Run   : py_dir_dup_check.py: dir_duplicate_check() \n\n")
-        py_logger.write(f"Directory    : {path} \n\n")
+        py_logger.write(f"Day..........: {today} @ {str(datetime.datetime.now())[11:16]} \n")
+        py_logger.write(f"Analyst......: {analyst} \n")
+        py_logger.write(f"Script Run...: py_dir_dup_check.py: dir_duplicate_check() \n\n")
+        py_logger.write(f"Directory....: {path} \n\n")
         # {results} will be an empty list in the file if there aren't duplicates
         py_logger.write(f"> {dt_now} - INFO: Duplicates = {results} \n\n")
     # Print message for the user

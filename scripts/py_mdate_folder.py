@@ -1,7 +1,7 @@
 import os
 import datetime
 
-## Last Updated    : 2025-09-08
+## Last Updated    : 2025-11-18
 ## Last Updated By : andrew bergman-bergman
 
 """
@@ -19,7 +19,9 @@ os.path.getctime() - Time when file *status* was last changed (inode data modifi
                      `write` & `writev` system calls.
 """
 
-# Logs stored in: `C:/Users/andre/Documents/Logs/`
+# Analyst will need to update their paths
+# Logs stored in: `C:/Users/andre/Documents/Logs/` (Windows)
+# Logs stored in: `/home/abergman/Documents/Python Vault/Logs/` (Ubuntu)
 
 # Analyst should add their name in a similar format
 analyst = "andrew.bergman"
@@ -91,11 +93,11 @@ def create_new_directories():
             os.mkdir(folder)
     # Creating a .txt file to act as our log file
     # Analyst needs to change the filepath locally
-    with open(f"C:/Users/andre/Documents/Logs/{today}-{run_time}-py_mdate_folder-log.txt","w") as py_logger:
-        py_logger.write(f"Day              : {today} @ {str(datetime.datetime.now())[11:16]} \n")
-        py_logger.write(f"Analyst          : {analyst} \n")
-        py_logger.write(f"Script Run       : py_file_organizer.py: get_mdatetime(); create_new_directories() \n\n")
-        py_logger.write(f"Directory        : {path} \n\n")
+    with open(f"/home/abergman/Documents/Python Vault/Logs/{today}-{run_time}-py_mdate_folder-log.txt","w") as py_logger:
+        py_logger.write(f"Day..............: {today} @ {str(datetime.datetime.now())[11:16]} \n")
+        py_logger.write(f"Analyst..........: {analyst} \n")
+        py_logger.write(f"Script Run.......: py_file_organizer.py: get_mdatetime(); create_new_directories() \n\n")
+        py_logger.write(f"Directory........: {path} \n\n")
         py_logger.write(f">> {dt_now} - New Folders Created: {mdate_directories} \n\n")
         # Looping through the files in the cwd
     # Printing a confirmation message with the names of the new directories

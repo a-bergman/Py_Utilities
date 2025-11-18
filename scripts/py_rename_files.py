@@ -4,10 +4,12 @@ import argparse
 import datetime
 import pandas as pd
 
-## Last Updated    : 2025-09-11
+## Last Updated    : 2025-11-18
 ## Last Updated By : a-bergman
 
-# Logs stored in: `C:/Users/andre/Documents/Logs/` - should be updated by the analyst
+# Analyst will need to update their paths
+# Logs stored in: `C:/Users/andre/Documents/Logs/` (Windows)
+# Logs stored in: `/home/abergman/Documents/Python Vault/Logs/` (Ubuntu)
 
 ## TO DO
 # Figure out a system to deal with duplicate files
@@ -56,14 +58,14 @@ def rename_files(file_path,name_path,name_csv):
         name_dict=dict(zip(name_df["old_name"],name_df["new_name"]))
         # Creating a .txt file to act as our log file
         # The analyst should update this path
-        with open(f"C:/Users/andre/Documents/Logs/{today}@{run_time}-rename_files-log.txt","w") as py_logger:
+        with open(f"/home/abergman/Documents/Python Vault/Logs/{today}@{run_time}-rename_files-log.txt","w") as py_logger:
             # Adding the location of the name dictionary & files to be renamed
-            py_logger.write(f"Day                  : {today} @ {str(datetime.datetime.now())[11:16]} \n")
-            py_logger.write(f"Analyst              : {analyst} \n")
-            py_logger.write(f"Script Run           : py_rename_files.py: rename_files() \n\n")
-            py_logger.write(f"File Location        : {file_path} \n")
-            py_logger.write(f"File Mapping Location: {name_path} \n")
-            py_logger.write(f"File Mapping .csv    : {name_csv} \n\n")
+            py_logger.write(f"Day...................: {today} @ {str(datetime.datetime.now())[11:16]} \n")
+            py_logger.write(f"Analyst...............: {analyst} \n")
+            py_logger.write(f"Script Run............: py_rename_files.py: rename_files() \n\n")
+            py_logger.write(f"File Location ........: {file_path} \n")
+            py_logger.write(f"File Mapping Location.: {name_path} \n")
+            py_logger.write(f"File Mapping .csv.....: {name_csv} \n\n")
             # Looping through the directory where the files to be renamed are
             for file in os.listdir(file_path):
                 # Getting the exact time that each loop runs at
