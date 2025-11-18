@@ -1,7 +1,7 @@
 """
 This module contains various functions designed to help with tedious manipulation of files.
 
-Last Update   : 2025-09-11
+Last Update   : 2025-11-18
 Last Update By: andrew.bergman
 
 """
@@ -75,16 +75,16 @@ def move_file(dst_path,src_path,file_name):
             # Making sure the file exists in the source
             if os.path.isfile(file_path):
                 # Creating a .txt file to act as our log file
-                 with open(f"logs/{today}@{run_time}-move_file-log.txt","w") as py_logger:
+                 with open(f"/home/abergman/Documents/Python Vault/Logs/{today}@{run_time}-move_file-log.txt","w") as py_logger:
                     # Getting the exact time that each code runs at
                     dt_now=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                     # Adding the path, new, and old file names to the log file
-                    py_logger.write(f"Day              : {today} @ {str(datetime.datetime.now())[11:16]} \n")
-                    py_logger.write(f"Analyst          : {analyst} \n")
-                    py_logger.write(f"Function Run     : move_file() \n\n")
-                    py_logger.write(f"Source Path      : {src_path} \n")
-                    py_logger.write(f"Destination Path : {dst_path} \n")
-                    py_logger.write(f"File Name        : {file_name} \n\n")
+                    py_logger.write(f"Day..............: {today} @ {str(datetime.datetime.now())[11:16]} \n")
+                    py_logger.write(f"Analyst..........: {analyst} \n")
+                    py_logger.write(f"Function Run.....: move_file() \n\n")
+                    py_logger.write(f"Source Path......: {src_path} \n")
+                    py_logger.write(f"Destination Path.: {dst_path} \n")
+                    py_logger.write(f"File Name........: {file_name} \n\n")
                     # Defining the destination location
                     # Printing confirmation of success
                     destination=os.path.join(dst_path,file_name)
@@ -138,14 +138,14 @@ def move_files(dst_path, src_path, file_type):
         # Validating the source
         if os.path.isdir(src_path):
            # Creating a .txt file to act as our log file
-           with open(f"logs/{today}@{run_time}-move_files-log.txt","w") as py_logger:
+           with open(f"/home/abergman/Documents/Python Vault/Logs/{today}@{run_time}-move_files-log.txt","w") as py_logger:
             # Adding the location of the name dictionary & files to be renamed
-            py_logger.write(f"Day              : {today} @ {str(datetime.datetime.now())[11:16]} \n")
-            py_logger.write(f"Analyst          : {analyst} \n")
-            py_logger.write(f"Function Run     : move_files() \n\n")
-            py_logger.write(f"Source Path      : {src_path} \n")
-            py_logger.write(f"Destination Path : {dst_path} \n")
-            py_logger.write(f"File Type        : {file_type} \n\n")
+            py_logger.write(f"Day..............: {today} @ {str(datetime.datetime.now())[11:16]} \n")
+            py_logger.write(f"Analyst..........: {analyst} \n")
+            py_logger.write(f"Function Run.....: move_files() \n\n")
+            py_logger.write(f"Source Path......: {src_path} \n")
+            py_logger.write(f"Destination Path.: {dst_path} \n")
+            py_logger.write(f"File Type........: {file_type} \n\n")
             # Looping through the source directory
             for file in os.listdir(src_path):
                 # Getting the exact time that each loop runs at
@@ -205,16 +205,16 @@ def rename_file(path, old_name, new_name):
         # Validating the existing file exists
         if os.path.isfile(old_file):
             # Creating a .txt file to act as our log file
-            with open(f"logs/{today}@{run_time}-rename_file-log.txt","w") as py_logger:
+            with open(f"/home/abergman/Documents/Python Vault/Logs/{today}@{run_time}-rename_file-log.txt","w") as py_logger:
                 # Getting the exact time that each loop runs at
                 dt_now=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                 # Adding the path, new, and old file names to the log file
-                py_logger.write(f"Day           : {today} @ {str(datetime.datetime.now())[11:16]} \n")
-                py_logger.write(f"Analyst       : {analyst} \n")
-                py_logger.write(f"Function Run  : rename_file() \n\n")
-                py_logger.write(f"File Location : {path} \n")
-                py_logger.write(f"Old File Name : {old_name} \n")
-                py_logger.write(f"New File Name : {new_name} \n\n")
+                py_logger.write(f"Day...........: {today} @ {str(datetime.datetime.now())[11:16]} \n")
+                py_logger.write(f"Analyst.......: {analyst} \n")
+                py_logger.write(f"Function Run..: rename_file() \n\n")
+                py_logger.write(f"File Location.: {path} \n")
+                py_logger.write(f"Old File Name.: {old_name} \n")
+                py_logger.write(f"New File Name.: {new_name} \n\n")
                 # os.replace is preferred to `os.rename` in Python versions >3.3
                 os.replace(old_file,new_file)
                 # Printing a confirmation
@@ -268,14 +268,14 @@ def rename_files(file_path, name_path, name_csv):
         # .csv must have those two column headers
         name_dict=dict(zip(name_df["old_name"],name_df["new_name"]))
         # Creating a .txt file to act as our log file
-        with open(f"logs/{today}@{run_time}-rename_files-log.txt","w") as py_logger:
+        with open(f"/home/abergman/Documents/Python Vault/Logs/{today}@{run_time}-rename_files-log.txt","w") as py_logger:
             # Adding the location of the name dictionary & files to be renamed
-            py_logger.write(f"Day                  : {today} @ {str(datetime.datetime.now())[11:16]} \n")
-            py_logger.write(f"Analyst              : {analyst} \n")
-            py_logger.write(f"Function Run         : rename_files() \n\n")
-            py_logger.write(f"File Location        : {file_path} \n")
-            py_logger.write(f"File Mapping Location: {name_path} \n")
-            py_logger.write(f"File Mapping .csv    : {name_csv} \n\n")
+            py_logger.write(f"Day...................: {today} @ {str(datetime.datetime.now())[11:16]} \n")
+            py_logger.write(f"Analyst...............: {analyst} \n")
+            py_logger.write(f"Function Run..........: rename_files() \n\n")
+            py_logger.write(f"File Location.........: {file_path} \n")
+            py_logger.write(f"File Mapping Location.: {name_path} \n")
+            py_logger.write(f"File Mapping .csv.....: {name_csv} \n\n")
             # Looping through the directory where the files to be renamed are
             for file in os.listdir(file_path):
                 # Getting the exact time that each loop runs at
@@ -377,12 +377,12 @@ def dir_duplicate_check(path):
     results=[key for key,value in file_dict.items() if count_dict[value]>1]
     # Writing a confirmation to the log file for the renamed file
     # No files are being modified, but it is good to have a record for posterity
-    with open(f"logs/{today}@{run_time}-dir_duplicate_check-record.txt","w") as py_logger:
+    with open(f"/home/abergman/Documents/Python Vault/Logs/{today}@{run_time}-dir_duplicate_check-record.txt","w") as py_logger:
         dt_now=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        py_logger.write(f"Day          : {today} @ {str(datetime.datetime.now())[11:16]} \n")
-        py_logger.write(f"Analyst      : {analyst} \n")
-        py_logger.write(f"Function Run : dir_duplicate_check() \n\n")
-        py_logger.write(f"Directory    : {path} \n\n")
+        py_logger.write(f"Day..........: {today} @ {str(datetime.datetime.now())[11:16]} \n")
+        py_logger.write(f"Analyst......: {analyst} \n")
+        py_logger.write(f"Function Run.: dir_duplicate_check() \n\n")
+        py_logger.write(f"Directory....: {path} \n\n")
         # {results} will be an empty list in the file if there aren't duplicates
         py_logger.write(f"> {dt_now} - INFO: Duplicates = {results} \n\n")
     # Print message for the user
