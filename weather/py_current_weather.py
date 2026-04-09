@@ -7,11 +7,12 @@ import tabulate as tb
 from pathlib import Path
 
 ## Version.........: 1.0
-## Last Updated....: 2025-11-18
+## Last Updated....: 2026-04-09
 ## Last Updated By.: a-bergman
 
 # Needs to be updated locally by the user
-# Logs stored in: `/home/abergman/Documents/Python Vault/Logs`
+# Logs stored in: Windows: ``
+# Logs stored in: Linux : ``
 
 # Analyst should add their name in a similar format
 user = "andrew.bergman"
@@ -281,7 +282,7 @@ dt_now=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 path=os.getcwd()
 
 # Saving a version of the command line printout in the log file for reference
-with open(f"/home/abergman/Documents/Python Vault/Logs/{today}-{run_time}-weather_script_test-log.txt","w") as py_logger:
+with open(f"/sample/file/path/{today}-{run_time}-weather_script_test-log.txt","w") as py_logger:
     py_logger.write(f"Day ...............: {today} @ {str(datetime.datetime.now())[11:16]} \n")
     py_logger.write(f"User...............: {user} \n")
     py_logger.write(f"Script Run ........: weather_script_test.py \n\n")
