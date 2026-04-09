@@ -4,12 +4,12 @@ import argparse
 import shutil
 import datetime
 
-## Last Updated    : 2025-11-18
+## Last Updated    : 2026-04-09
 ## Last Updated By : a-bergman
 
 # Analyst will need to update their paths
-# Logs stored in: `C:/Users/andre/Documents/Logs/` (Windows)
-# Logs stored in: `/home/abergman/Documents/Python Vault/Logs/` (Ubuntu)
+# Logs stored in: Windows: ``
+# Logs stored in: Linux  : ``
 
 ## TO DO
 # Figure out a system to deal with duplicate files
@@ -31,7 +31,9 @@ def move_files(dst_path,src_path,file_type):
 
     Returns:
     --------
-    A log file in `/logs` with the date, time, and function name in the title of the file; prints confirmation.
+    Renamed files.
+    
+    A log file in the log directory with the date, time, and function name in the title of the file; prints confirmation.
     """
     # TO DO:
     # Figure out a way to handle the
@@ -54,7 +56,7 @@ def move_files(dst_path,src_path,file_type):
         if os.path.isdir(src_path):
            # Creating a .txt file to act as our log file
            # Should be updated by the analyst
-           with open(f"/home/abergman/Documents/Python Vault/Logs/{today}@{run_time}-move_files-log.txt","w") as py_logger:
+           with open(f"/sample/file/path/{today}@{run_time}-move_files-log.txt","w") as py_logger:
             # Adding the location of the name dictionary & files to be renamed
             py_logger.write(f"Day..............: {today} @ {str(datetime.datetime.now())[11:16]} \n")
             py_logger.write(f"Analyst..........: {analyst} \n")
@@ -78,6 +80,7 @@ def move_files(dst_path,src_path,file_type):
                     print(f"{file_name} successfully moved to {dst_path}")
                     # Writing a confirmation to the log file for each renamed file
                     py_logger.write(f"> {dt_now} - INFO: {file} moved from {src_path} to {dst_path} \n")
+            return "~~~ File Moving Complete ~~~"
         else:
             sys.exit(f"ERROR: Source {src_path} is an invalid directory.")
     else:
