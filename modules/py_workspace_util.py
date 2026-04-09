@@ -75,7 +75,7 @@ def move_file(dst_path,src_path,file_name):
             # Making sure the file exists in the source
             if os.path.isfile(file_path):
                 # Creating a .txt file to act as our log file
-                 with open(f"/home/abergman/Documents/Python Vault/Logs/{today}@{run_time}-move_file-log.txt","w") as py_logger:
+                 with open(f"/sample/file/path/{today}@{run_time}-move_file-log.txt","w") as py_logger:
                     # Getting the exact time that each code runs at
                     dt_now=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                     # Adding the path, new, and old file names to the log file
@@ -138,7 +138,7 @@ def move_files(dst_path, src_path, file_type):
         # Validating the source
         if os.path.isdir(src_path):
            # Creating a .txt file to act as our log file
-           with open(f"/home/abergman/Documents/Python Vault/Logs/{today}@{run_time}-move_files-log.txt","w") as py_logger:
+           with open(f"/sample/file/path/{today}@{run_time}-move_files-log.txt","w") as py_logger:
             # Adding the location of the name dictionary & files to be renamed
             py_logger.write(f"Day..............: {today} @ {str(datetime.datetime.now())[11:16]} \n")
             py_logger.write(f"Analyst..........: {analyst} \n")
@@ -162,6 +162,7 @@ def move_files(dst_path, src_path, file_type):
                     print(f"{file_name} successfully moved to {dst_path}")
                     # Writing a confirmation to the log file for each renamed file
                     py_logger.write(f"> {dt_now} - INFO: {file} moved from {src_path} to {dst_path} \n")
+            return "~~~ File Moving Complete ~~~"
         else:
             print(f"ERROR: Source {src_path} is an invalid directory.")
     else:
@@ -205,7 +206,7 @@ def rename_file(path, old_name, new_name):
         # Validating the existing file exists
         if os.path.isfile(old_file):
             # Creating a .txt file to act as our log file
-            with open(f"/home/abergman/Documents/Python Vault/Logs/{today}@{run_time}-rename_file-log.txt","w") as py_logger:
+            with open(f"/sample/file/paths/{today}@{run_time}-rename_file-log.txt","w") as py_logger:
                 # Getting the exact time that each loop runs at
                 dt_now=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                 # Adding the path, new, and old file names to the log file
@@ -268,7 +269,7 @@ def rename_files(file_path, name_path, name_csv):
         # .csv must have those two column headers
         name_dict=dict(zip(name_df["old_name"],name_df["new_name"]))
         # Creating a .txt file to act as our log file
-        with open(f"/home/abergman/Documents/Python Vault/Logs/{today}@{run_time}-rename_files-log.txt","w") as py_logger:
+        with open(f"/sample/file/path/{today}@{run_time}-rename_files-log.txt","w") as py_logger:
             # Adding the location of the name dictionary & files to be renamed
             py_logger.write(f"Day...................: {today} @ {str(datetime.datetime.now())[11:16]} \n")
             py_logger.write(f"Analyst...............: {analyst} \n")
@@ -294,6 +295,7 @@ def rename_files(file_path, name_path, name_csv):
                     print(f"{file} has been renamed {value}")
                     # Writing a confirmation to the log file for each renamed file
                     py_logger.write(f"> {dt_now} - INFO: {file} has been renamed to: {value} \n")
+            return "~~~ File Renaming Complete ~~~"
     else:
         print(f"ERROR: {names} is not a valid file path")
 
@@ -370,6 +372,7 @@ def dir_duplicate_check(path):
             # pairs to the dictionary
             file_hash=hashlib.md5(open(full_path,"rb").read()).hexdigest()
             file_dict[file]=file_hash
+        return "~~~ File Checking Complete Complete ~~~"
     # Creating a Counter
     count_dict=Counter(file_dict.values())
     # Extracting the dict values and counting
