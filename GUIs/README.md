@@ -16,6 +16,6 @@ Once complete, the GUIs will make it easier to run these scripts for anyone rega
 
 ## Status
 
-| Script                 | Status      | Notes                                                              |
-| ---------------------- | ----------- | ------------------------------------------------------------------ |
-| `py_rename_files.py` | In Progress | Basic GUI done: need to add more comments and integrate the script |
+| Script                 | Status      | Notes                                                                                        |
+| ---------------------- | ----------- | -------------------------------------------------------------------------------------------- |
+| `py_rename_files.py` | In Progress | 2026-04-13 - GUI done; script implemented but import needs to be fixed; need to add comments |
