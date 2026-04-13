@@ -1,4 +1,6 @@
 import sys
+import os
+import py_rename_files
 from PyQt6.QtWidgets import  QApplication, QWidget, QPushButton, QLabel,QVBoxLayout, QHBoxLayout, QLineEdit, QFileDialog, QMessageBox, QFormLayout, QGroupBox, QComboBox
 
 class MyApp(QWidget):
@@ -151,12 +153,16 @@ class MyApp(QWidget):
 
     def run_script(self):
         file = self.file_input.text()
-
-        if not file.endswith(".csv"):
-            print("Invalid file! Please select a .csv")
-            return
-        print("Processing:", file)
-
+        file_dir =  self.dir_input.text()
+        print(f"Processing names in: {os.path.basename(file)}")
+        print(f"Renaming files in  : {file_dir}")
+        print(f"~~~File Renaming Starting~~~")
+        try:
+            py_rename_files.rename_files(file_path = file_dir, name_csv = file)
+            print(f"~~~File Renaming Complete~~~")
+        except Exception as ex:
+            self.show_error(f"Error encountered: {str(ex)}")
+            print(f"Error encountered: {str(ex)}")
 
 # Run app
 app = QApplication(sys.argv)
