@@ -2,6 +2,7 @@ import os
 import sys
 import argparse
 import datetime
+import pathlib
 import pandas as pd
 
 ## Last Updated    : 2026-04-09
@@ -19,7 +20,7 @@ import pandas as pd
 # Analyst should add their name in a similar format
 analyst = "andrew.bergman"
 
-def rename_files(file_path,name_path,name_csv):
+def rename_files(file_path,name_csv):
     """
     Parameters:
     ----------
@@ -50,12 +51,12 @@ def rename_files(file_path,name_path,name_csv):
     today=datetime.datetime.today().strftime('%Y-%m-%d')
     run_time=str(datetime.datetime.now())[11:16].replace(":","꞉")
     # Creating file path to name_csv
-    names=os.path.join(name_path, name_csv)
+    names=os.path.join(name_csv)
     # Making sure it exists
-    if os.path.isfile(names):
+    if os.path.isfile(name_csv):
         # Reading the .csv in
         # Converting to dictionary
-        name_df=pd.read_csv(names)
+        name_df=pd.read_csv(name_csv)
         # .csv must have those two column headers
         name_dict=dict(zip(name_df["old_name"],name_df["new_name"]))
         # Creating a .txt file to act as our log file
@@ -66,8 +67,8 @@ def rename_files(file_path,name_path,name_csv):
             py_logger.write(f"Analyst...............: {analyst} \n")
             py_logger.write(f"Script Run............: py_rename_files.py: rename_files() \n\n")
             py_logger.write(f"File Location ........: {file_path} \n")
-            py_logger.write(f"File Mapping Location.: {name_path} \n")
-            py_logger.write(f"File Mapping .csv.....: {name_csv} \n\n")
+            py_logger.write(f"File Mapping Location.: {pathlib.Path(name_path)} \n")
+            py_logger.write(f"File Mapping .csv.....: {os.path.basename(name_csv)} \n\n")
             # Looping through the directory where the files to be renamed are
             for file in os.listdir(file_path):
                 # Getting the exact time that each loop runs at
@@ -88,23 +89,22 @@ def rename_files(file_path,name_path,name_csv):
                     py_logger.write(f"> {dt_now} - INFO: {file} has been renamed to: {value} \n")
             return "~~~ File Renaming Complete ~~~"
     else:
-        sys.exit(f"ERROR: {names} is not a valid file path")
+        sys.exit(f"ERROR: {name_csv} is not a valid file path")
 
 # When we execute this, we want to make sure all args are present
 # The TRY/EXCEPT will raise an error with a missing argument
 # https://medium.com/@evaGachirwa/running-python-script-with-arguments-in-the-command-line-93dfa5f10eff
 if __name__=="__main__":
-    parser=argparse.ArgumentParser(description="Renames files in `fpath` based on `ncsv` in `npath`")
+    parser=argparse.ArgumentParser(description="Renames files in `fpath` based on the file in `npath`")
     try:
         # Making entry in the command line easier
         parser.add_argument("--fpath",required=True,type=str,help="enter a path to the destination dir")
-        parser.add_argument("--npath",required=True,type=str,help="enter a path to the source dir")
-        parser.add_argument("--ncsv",required=True,type=str,help="enter type of file to be moved")
+        parser.add_argument("--npath",required=True,type=str,help="enter a path to the renaming source dir")
         args=parser.parse_args()
         # Defining the args for the function
         fpath=args.fpath
         npath=args.npath
         ncsv=args.ncsv
-        print(rename_files(fpath,npath,ncsv))
+        print(rename_files(fpath,npath))
     except TypeError:
         print("Please make sure your arguments are correct")
